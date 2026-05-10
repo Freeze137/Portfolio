@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Souza - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/iconpreto.webp">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <div id="custom-emoji">
+                <div class="eye"><div class="pupil"></div></div>
+                <div class="eye"><div class="pupil"></div></div>
+            </div>
+            Rafael
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Projetos</a></li>
+            <li><a href="#certificates">Certificados</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Engenheiro de <br>Software</h1>
+            <p>Estudante de Engenharia de Software com foco em desenvolvimento web e design de interfaces e engenharia de sistemas.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Entre em Contato</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">Ver Projetos</button>
+                <a href="CV_rafael_2026.pdf" download class="btn btn-cv">📄 Baixar CV</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-container">
+                <div class="image-frame">
+                    <img src="img/rafa1.webp" alt="Rafael Souza">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <h2 class="section-title">Minhas <span>Competências</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS, JavaScript, Node.Js,SwiftUI e frameworks modernos para criar interfaces.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Design responsivo e intuitivo focado na melhor experiência para o usuário.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>Node.js, Java,Swift e APIs RESTful para soluções robustas.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Database</h3>
+                    <p>MongoDB, PostgreSQL, Node-RED, IBM Cloudant e otimização de dados para performance.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3>Responsivo</h3>
+                    <p>Design adaptável para todos os dispositivos e tamanhos de tela.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <h3>Performance</h3>
+                    <p>Otimização de velocidade e escalabilidade em produção.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-container">
+            <h2 class="section-title">Meus <span>Projetos</span></h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" 
+                    data-title="Design Moderno" 
+                    data-description="Um exemplo de interface limpa e contemporânea, focada na experiência do usuário e em um layout responsivo."
+                    data-tech="HTML, CSS, JavaScript"
+                    data-live-url="#"
+                    data-repo-url="https://github.com/Freeze137/academia">
+                    <img loading="lazy" src="img/CTOFC.png" alt="Projeto 1">
+                    <div class="portfolio-overlay">
+                        <h3>Design Moderno</h3>
+                        <p>Centro De Treinamento </p>
+                    </div>
+                </div>
+                <div class="portfolio-item"
+                    data-title="E-commerce(RaizTech/by Ricardo Marinho)"
+                    data-description="Este é o Painel de Controle para a RaizTech, um sistema de gestão agrícola inteligente focado em otimizar a irrigação com o uso de Inteligência Artificial e Machine Learning. O painel oferece uma interface completa para monitorar, analisar e controlar o desempenho dos irrigadores e sensores na fazenda."
+                    data-tech="CSS, TypeScript, Node.js, MongoDB, MySQL,"
+                    data-live-url="#"
+                    data-repo-url="https://github.com/RicardoMarinho-code/Painel-de-controle-raiztech">
+                    <img loading="lazy" src="img/rafa4.webp" alt="Projeto 2">
+                    <div class="portfolio-overlay">
+                        <h3>RaizTech</h3>
+                        <p>Plataforma completa de Gestão agrícola</p>
+                    </div>
+                </div>
+                <div class="portfolio-item"
+                    data-title="App Mobile"
+                    data-description="Aplicativo Mobile(Minha Cripto)desenvolvido com SwiftUI para facilitar o uso de criptomoedas, com foco em simplicidade, usabilidade e segurança para iOS."
+                    data-tech="Node-RED, IBM Cloudant, Swift/SwiftUI"
+                    data-live-url="#"
+                    data-repo-url="https://github.com/Freeze137/Minha-Cripto">
+                    <img loading="lazy" src="img/minha-cripto.webp" alt="Projeto 3">
+                    <div class="portfolio-overlay">
+                        <h3>App Mobile</h3>
+                        <p>Minha Cripto</p>
+                    </div>
+                </div>
+                <div class="portfolio-item"
+                    data-title="Kinoplex"
+                    data-description="Reestruturação do site da Kinoplex, com foco em modernização da interface, melhor experiência do usuário e design responsivo."
+                    data-tech="TypeScript, React, Node.js, Python, ....."
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img loading="lazy" src="img/cinema.webp" alt="Kinoplex" class="img-contain" style="object-fit: contain; background-color: #f26522;">
+                    <div class="portfolio-overlay">
+                        <h3>Kinoplex</h3>
+                        <p>Reestruturação do site</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CERTIFICADOS ===================== -->
+    <section class="certificates" id="certificates">
+        <div class="certificates-container">
+            <h2 class="section-title">Meus <span>Certificados</span></h2>
+            <p class="certificates-subtitle">Certificações, capacitações essenciais para minha formação unindo Cloud, Inteligencia Emocional, Programação e Lógica Avançada.</p>
+
+            <div class="cert-grid">
+
+                <div class="cert-card">
+                    <div class="cert-card-header">
+                        <div class="cert-logo cert-logo--img">
+                            <img src="img/cert-img-1.png" alt="Certificado 1">
+                        </div>
+                        <span class="cert-year">2025</span>
+                    </div>
+                    <h3 class="cert-title">Soft Skills</h3>
+                    <p class="cert-issuer">RocketSeat</p>
+                    <a href="https://app.rocketseat.com.br/certificates/fe58694a-edfa-46e0-9430-57535f129cd2" class="cert-verify" target="_blank">Verificar ↗</a>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-card-header">
+                        <div class="cert-logo cert-logo--img">
+                            <img src="img/cert-img-2.png" alt="Certificado 2">
+                        </div>
+                        <span class="cert-year">2025</span>
+                    </div>
+                    <h3 class="cert-title">Liderança Técnica</h3>
+                    <p class="cert-issuer">RocketSeat</p>
+                    <a href="https://app.rocketseat.com.br/certificates/0393aaec-fb00-48b3-8699-10258ea04863" class="cert-verify" target="_blank">Verificar ↗</a>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-card-header">
+                        <div class="cert-logo cert-logo--img">
+                            <img src="img/cert-img-3.png" alt="Certificado 3">
+                        </div>
+                        <span class="cert-year">2025</span>
+                    </div>
+                    <h3 class="cert-title">Comunicação assertiva</h3>
+                    <p class="cert-issuer">RocketSeat</p>
+                    <a href="https://app.rocketseat.com.br/certificates/f561ff4e-0273-44a0-92f0-ee2ecd900b67" class="cert-verify" target="_blank">Verificar ↗</a>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-card-header">
+                        <div class="cert-logo cert-logo--img">
+                            <img src="img/cert-img-4.png" alt="Certificado 4">
+                        </div>
+                        <span class="cert-year">2025</span>
+                    </div>
+                    <h3 class="cert-title">Praticas de Cloud Services usando Swift com ênfase em Serviços Cognitivos</h3>
+                    <p class="cert-issuer">IBM SKILLS ACADEMY</p>
+                    <a href="#" class="cert-verify" target="_blank">Verificar ↗</a>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </section>
+                                                   <!-- ================== CERTIFICADOS ================== -->
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2 class="section-title">Sobre <span>Mim</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Rafael Souza</h3>
+                    <p> Estudante de Engenharia de Software na Universidade Católica de Brasília (UCB), atualmente no 5º semestre. Busco constante aprendizado e aprimoramento em desenvolvimento de software, programação e engenharia de sistemas. </p>
+                    <p>Tenho interesse em áreas como desenvolvimento web e engenharia de dados. Estou sempre explorando novas tecnologias e fortalecendo minha base em lógica de programação e boas práticas de código.</p>
+                    <p>Aberto a oportunidades, networking e desafios que contribuam para meu crescimento profissional na área de tecnologia.</p>
+                    <div class="tech-badges">
+                        <span>C</span>
+                        <span>Swift / SwiftUI</span>
+                        <span>Java</span>
+                        <span>Python</span>
+                        <span>Node-RED</span>
+                        <span>IBM Cloudant</span>
+                        <span>MongoDB</span>
+                        <span>MySQL</span>
+                        <span>TypeScript</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <div class="about-img">
+                        <img src="img/rafa1.webp" alt="Rafael Souza">
+                    </div>
+                    <div class="about-img">
+                        <img src="img/rafa4.webp" alt="Setup">
+                    </div>
+                    <div class="about-img">
+                        <img src="img/rafa2.webp" alt="Rafael Souza">
+                    </div>
+                    <div class="about-img">
+                        <img src="img/rafa3.webp" alt="Rafael Souza">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Vamos Trabalhar <span style="color: var(--accent);">Juntos</span></h2>
+            <p>Estou sempre aberto para novas oportunidades e projetos desafiadores.<br><br></p>
+            <div class="contact-links">
+                <a href="https://instagram.com/therafaelsouza" class="contact-link" target="_blank">
+                    📷 Instagram
+                </a>
+                <a href="mailto:rafascosta2017@gmail.com" id="email-link" class="contact-link">
+                    <span class="email-text original">✉️ E-mail</span>
+                    <span class="email-text copied">✅ E-mail Copiado!</span>
+                </a>
+                <a href="https://www.linkedin.com/in/rafael-souza-71481b2b5/" class="contact-link" target="_blank">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/Freeze137" class="contact-link" target="_blank">
+                    💻 GitHub
+                </a>
+            </div>
+            <a href="#home" class="btn btn-primary">← Voltar ao Topo</a>
+            <a href="CV_rafael_2026.pdf" download class="btn btn-cv">📄 Baixar CV</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rafael Souza. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-img" src="" alt="Imagem do Projeto">
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <div class="modal-tech">
+                <strong>Tecnologias:</strong>
+                <p id="modal-tech"></p>
+            </div>
+            <div class="modal-links">
+                <a id="modal-live-link" href="#" class="btn btn-primary" target="_blank">Ver Projeto</a>
+                <a id="modal-repo-link" href="#" class="btn btn-secondary" target="_blank">Ver Código</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

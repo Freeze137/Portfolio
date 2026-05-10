@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Souza - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Rafael</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Engenheiro de <br>Software</h1>
+            <p>Estudante de Engenharia de Software com foco em desenvolvimento web e design de interfaces e engenharia de sistemas.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Entre em Contato</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">Ver Portfólio</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-container">
+                <div class="image-frame">
+                    <img src="https://www.instagram.com/therafaelsouza/" alt="Rafael Souza">
+                </div>
+                <div class="image-accent accent1"></div>
+                <div class="image-accent accent2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <h2 class="section-title">Minhas <span>Competências</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS, JavaScript, React e frameworks modernos para criar interfaces incríveis.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Design responsivo e intuitivo focado na melhor experiência do usuário.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>Node.js, Python e APIs RESTful para soluções robustas.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Database</h3>
+                    <p>MongoDB, PostgreSQL e otimização de dados para performance.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3>Responsivo</h3>
+                    <p>Design adaptável para todos os dispositivos e tamanhos de tela.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <h3>Performance</h3>
+                    <p>Otimização de velocidade e escalabilidade em produção.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-container">
+            <h2 class="section-title">Meu <span>Portfólio</span></h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="design"
+                    data-title="Design Moderno" 
+                    data-description="Um exemplo de interface limpa e contemporânea, focada na experiência do usuário e em um layout responsivo."
+                    data-tech="HTML5, CSS3, JavaScript"
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=400&fit=crop" alt="Projeto 1">
+                    <div class="portfolio-overlay">
+                        <h3>Design Moderno</h3>
+                        <p>Interface limpa e contemporânea</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web"
+                    data-title="E-commerce"
+                    data-description="Plataforma de e-commerce completa com carrinho de compras, checkout e integração de pagamento."
+                    data-tech="React, Node.js, MongoDB"
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324331cd?w=500&h=400&fit=crop" alt="Projeto 2">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce</h3>
+                        <p>Plataforma completa de vendas</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile"
+                    data-title="App Mobile"
+                    data-description="Aplicativo mobile com foco em performance e experiência de usuário otimizada para iOS e Android."
+                    data-tech="Flutter, Firebase"
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=400&fit=crop" alt="Projeto 3">
+                    <div class="portfolio-overlay">
+                        <h3>App Mobile</h3>
+                        <p>Experiência mobile otimizada</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web"
+                    data-title="Analytics"
+                    data-description="Dashboard de análise de dados em tempo real com gráficos interativos e relatórios detalhados."
+                    data-tech="Vue.js, D3.js, Python (Flask)"
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img src="https://images.unsplash.com/photo-1460925895917-adf4e565f901?w=500&h=400&fit=crop" alt="Projeto 4">
+                    <div class="portfolio-overlay">
+                        <h3>Analytics</h3>
+                        <p>Dashboard com dados em tempo real</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web"
+                    data-title="SaaS Platform"
+                    data-description="Plataforma SaaS escalável para empresas, com gerenciamento de usuários e recursos avançados."
+                    data-tech="Angular, Node.js, PostgreSQL"
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop" alt="Projeto 5">
+                    <div class="portfolio-overlay">
+                        <h3>SaaS Platform</h3>
+                        <p>Solução empresarial escalável</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design"
+                    data-title="Brand Identity"
+                    data-description="Criação de uma identidade visual forte e consistente para uma marca, incluindo logo, paleta de cores e tipografia."
+                    data-tech="Figma, Adobe Illustrator"
+                    data-live-url="#"
+                    data-repo-url="#">
+                    <img src="https://images.unsplash.com/photo-1517694712605-da63cf17eda4?w=500&h=400&fit=crop" alt="Projeto 6">
+                    <div class="portfolio-overlay">
+                        <h3>Brand Identity</h3>
+                        <p>Identidade visual consistente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2 class="section-title">Sobre <span>Mim</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Rafael Souza</h3>
+                    <p> Estudante de Engenharia de Software na Universidade Católica de Brasília (UCB), atualmente no 5º semestre. Busco constante aprendizado e aprimoramento em desenvolvimento de software, programação e engenharia de sistemas. 
+                    <p>Tenho interesse em áreas como desenvolvimento web e engenharia de dados. Estou sempre explorando novas tecnologias e fortalecendo minha base em lógica de programação e boas práticas de código.</p>
+                    <p>Aberto a oportunidades, networking e desafios que contribuam para meu crescimento profissional na área de tecnologia
+                        Experiencias: C, Swift/SwiftUI, NODE-RED, Cloudant , MongoDB</p>
+                    
+                </div>
+                <div class="about-images">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop" alt="Foto 1">
+                    </div>
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=300&fit=crop" alt="Foto 2">
+                    </div>
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop" alt="Foto 3">
+                    </div>
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1519085360771-9852ef158dba?w=500&h=300&fit=crop" alt="Foto 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Vamos Trabalhar <span style="color: var(--accent);">Juntos</span></h2>
+            <p>Estou sempre aberto para novas oportunidades e projetos desafiadores.</p>
+            <div class="contact-links">
+                <a href="https://instagram.com/therafaelsouza" class="contact-link" target="_blank">
+                    📷 Instagram
+                </a>
+                <a href="mailto:rafascosta2017@gmail.com" class="contact-link">
+                    ✉️ E-mail
+                </a>
+                <a href="https://www.linkedin.com/in/rafael-souza-71481b2b5/" class="contact-link" target="_blank">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/Freeze137" class="contact-link" target="_blank">
+                    💻 GitHub
+                </a>
+            </div>
+            <button class="btn btn-primary" onclick="document.querySelector('nav').scrollIntoView()">← Voltar ao Topo</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Rafael Souza. Todos os direitos reservados. |</p>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-img" src="" alt="Imagem do Projeto">
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <div class="modal-tech">
+                <strong>Tecnologias:</strong>
+                <p id="modal-tech"></p>
+            </div>
+            <div class="modal-links">
+                <a id="modal-live-link" href="#" class="btn btn-primary" target="_blank">Ver Projeto</a>
+                <a id="modal-repo-link" href="#" class="btn btn-secondary" target="_blank">Ver Código</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
