@@ -66,6 +66,8 @@ let lastMouseX = window.innerWidth / 2;
 let lastMouseY = window.innerHeight / 2;
 let mouseTrackingActive = false;
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 window.addEventListener('scroll', () => {
     isScrolling = true;
     clearTimeout(scrollTimeout);
@@ -113,7 +115,7 @@ function handleHeroMouseMove(e) {
 }
 
 function enableHeroTracking() {
-    if (mouseTrackingActive) return;
+    if (mouseTrackingActive || reduceMotion.matches) return;
     document.addEventListener('mousemove', handleHeroMouseMove, { passive: true });
     mouseTrackingActive = true;
 }
@@ -183,7 +185,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             e.preventDefault();
             target.scrollIntoView({
-                behavior: 'smooth',
+                behavior: reduceMotion.matches ? 'auto' : 'smooth',
                 block: 'start'
             });
         }

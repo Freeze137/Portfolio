@@ -83,8 +83,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 15, 15, 0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 15, 15, 0.97);
     z-index: 1000;
     padding: 1.25rem 2rem;
     border-bottom: 1px solid rgba(212, 175, 55, 0.1);
@@ -395,22 +394,30 @@ nav {
     padding: 5rem 2rem;
 }
 
+/* Grade de 6 colunas: 2 destaques (3 colunas cada) na primeira linha
+   e 3 projetos (2 colunas cada) na segunda. Fecha as linhas sem sobras. */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.75rem;
     margin-top: 2.5rem;
 }
 
 .portfolio-item {
+    grid-column: span 2;
     position: relative;
-    height: 400px;
+    height: 330px;
     border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
     opacity: 0;
     transform: translate3d(0, 18px, 0);
     transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.portfolio-item--featured {
+    grid-column: span 3;
+    height: 420px;
 }
 
 .portfolio-item.visible {
@@ -742,6 +749,18 @@ body.modal-open {
     opacity: 1;
 }
 
+@media (max-width: 1100px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-item,
+    .portfolio-item--featured {
+        grid-column: span 1;
+        height: 300px;
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         padding: 1rem 1rem;
@@ -773,6 +792,16 @@ body.modal-open {
     .portfolio-grid,
     .skills-grid {
         gap: 1.25rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-item,
+    .portfolio-item--featured {
+        grid-column: span 1;
+        height: 260px;
     }
 
     .contact-links {
@@ -960,4 +989,28 @@ html {
 
 html::-webkit-scrollbar {
     display: none;                /* Chrome / Safari */
+}
+/* =============================================
+   ACESSIBILIDADE / PERFORMANCE
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .skill-card,
+    .portfolio-item,
+    .cert-card,
+    .about-text,
+    .about-img,
+    .contact-link {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
