@@ -29,7 +29,7 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Engenheiro de <br>Software</h1>
+            <h1>Engenheiro de <br><span>Software</span></h1>
             <p>Estudante de Engenharia de Software com foco em desenvolvimento web e design de interfaces e engenharia de sistemas.</p>
             <div class="cta-buttons">
                 <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Entre em Contato</button>
@@ -88,7 +88,7 @@
         <div class="portfolio-container">
             <h2 class="section-title">Meus <span>Projetos</span></h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item portfolio-item--featured"
+                <div class="portfolio-item portfolio-item--featured" role="button" tabindex="0"
                     data-title="Perseus"
                     data-description="Treinador de digitação para português e inglês, com modos de texto corrido e de código. Tem ranking online, duelos entre jogadores e um teclado virtual em forma de mapa estelar, onde o brilho de cada tecla mostra o domínio do usuário. O motor de digitação é TypeScript puro e funciona offline; a validação da linha do tempo de teclas é feita no servidor para impedir pontuações fraudadas."
                     data-tech="Next.js 16, React 19, Tailwind CSS 4, NestJS 11, TypeScript, Supabase, Docker"
@@ -100,7 +100,7 @@
                         <p>Treinador de digitação com ranking e duelos</p>
                     </div>
                 </div>
-                <div class="portfolio-item portfolio-item--featured"
+                <div class="portfolio-item portfolio-item--featured" role="button" tabindex="0"
                     data-title="RaizTech (by Ricardo Marinho)"
                     data-description="Painel de controle da RaizTech, um sistema de gestão agrícola inteligente focado em otimizar a irrigação com Inteligência Artificial e Machine Learning. O painel oferece uma interface completa para monitorar, analisar e controlar o desempenho dos irrigadores e sensores na fazenda."
                     data-tech="CSS, TypeScript, Node.js, MongoDB, MySQL"
@@ -112,7 +112,7 @@
                         <p>Plataforma completa de gestão agrícola</p>
                     </div>
                 </div>
-                <div class="portfolio-item"
+                <div class="portfolio-item" role="button" tabindex="0"
                     data-title="Centro de Treinamento"
                     data-description="Site de academia com interface limpa e contemporânea, focada na experiência do usuário e em um layout responsivo."
                     data-tech="HTML, CSS, JavaScript"
@@ -124,7 +124,7 @@
                         <p>Site de academia responsivo</p>
                     </div>
                 </div>
-                <div class="portfolio-item"
+                <div class="portfolio-item" role="button" tabindex="0"
                     data-title="App Mobile"
                     data-description="Aplicativo mobile (Minha Cripto) desenvolvido com SwiftUI para facilitar o uso de criptomoedas, com foco em simplicidade, usabilidade e segurança para iOS."
                     data-tech="Node-RED, IBM Cloudant, Swift/SwiftUI"
@@ -136,7 +136,7 @@
                         <p>Minha Cripto</p>
                     </div>
                 </div>
-                <div class="portfolio-item"
+                <div class="portfolio-item" role="button" tabindex="0"
                     data-title="Kinoplex"
                     data-description="Reestruturação do site da Kinoplex, com foco em modernização da interface, melhor experiência do usuário e design responsivo."
                     data-tech="TypeScript, React, Node.js, Python"
@@ -287,10 +287,10 @@
         <p>&copy; 2026 Rafael Souza. Todos os direitos reservados.</p>
     </footer>
 
-    <div id="portfolio-modal" class="modal">
+    <div id="portfolio-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <img id="modal-img" src="" alt="Imagem do Projeto">
+            <button type="button" class="close-button" aria-label="Fechar">&times;</button>
+            <img id="modal-img" src="img/perseus.webp" alt="" loading="lazy" width="800" height="1000">
             <h3 id="modal-title"></h3>
             <p id="modal-description"></p>
             <div class="modal-tech">

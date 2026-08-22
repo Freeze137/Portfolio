@@ -167,12 +167,10 @@ const contactBtn = document.querySelector('.cta-buttons .btn-primary');
 if (contactBtn && eyes.length > 0) {
     contactBtn.addEventListener('mouseenter', () => {
         eyes.forEach(eye => eye.classList.add('large'));
-        pupils.forEach(pupil => pupil.classList.add('large'));
     });
 
     contactBtn.addEventListener('mouseleave', () => {
         eyes.forEach(eye => eye.classList.remove('large'));
-        pupils.forEach(pupil => pupil.classList.remove('large'));
     });
 }
 
@@ -205,8 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeButton = document.querySelector('.close-button');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-        portfolioItems.forEach(item => {
-            item.addEventListener('click', () => {
+        let lastFocused = null;
+
+        const openModal = (item) => {
+                lastFocused = item;
                 const title = item.dataset.title;
                 const description = item.dataset.description;
                 const tech = item.dataset.tech;
@@ -220,18 +220,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 liveLink.href = liveUrl;
                 repoLink.href = repoUrl;
                 modalImg.src = imgSrc;
+                modalImg.alt = `Captura do projeto ${title}`;
 
                 liveLink.style.display = liveUrl === '#' ? 'none' : 'inline-block';
                 repoLink.style.display = repoUrl === '#' ? 'none' : 'inline-block';
 
                 modal.style.display = 'block';
                 document.body.classList.add('modal-open');
+                closeButton.focus();
+        };
+
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => openModal(item));
+
+            item.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openModal(item);
+                }
             });
         });
 
         const closeModal = () => {
             modal.style.display = 'none';
             document.body.classList.remove('modal-open');
+
+            if (lastFocused) {
+                lastFocused.focus();
+                lastFocused = null;
+            }
         };
 
         closeButton.addEventListener('click', closeModal);
