@@ -11,12 +11,16 @@
     --accent: #d4af37;
     --accent-light: #e8c547;
     --text-primary: #e8e8e8;
-    --text-secondary: #a8a8a8;
+    --text-secondary: #b4b4b4;
     --bg: #0f0f0f;
 }
 
 html {
     background-color: #0f0f0f;
+}
+
+section[id] {
+    scroll-margin-top: 6rem;
 }
 
 body {
@@ -446,36 +450,112 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.portfolio-overlay {
+/* A legenda fica sempre visivel: em toque o :hover nunca dispara, e a
+   secao inteira ficava sem uma palavra. O hover so acrescenta as tags. */
+.portfolio-caption {
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.68);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    inset: auto 0 0 0;
     z-index: 10;
+    padding: 1.9rem 1.25rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    background: linear-gradient(to top,
+        rgba(8, 8, 8, 0.97) 0%,
+        rgba(8, 8, 8, 0.93) 48%,
+        rgba(8, 8, 8, 0.62) 76%,
+        rgba(8, 8, 8, 0) 100%);
 }
 
-.portfolio-item:hover img {
-    transform: scale(1.04);
-}
-
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-overlay h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+.portfolio-caption h3 {
+    font-size: 1.35rem;
+    line-height: 1.25;
     color: var(--accent);
 }
 
-.portfolio-overlay p {
+.portfolio-caption p {
+    font-size: 0.92rem;
+    line-height: 1.4;
     color: var(--text-primary);
-    text-align: center;
+}
+
+.portfolio-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.portfolio-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.portfolio-status--live {
+    background: var(--accent);
+    color: #101010;
+}
+
+.portfolio-status--code {
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    color: var(--accent);
+}
+
+.portfolio-status--study {
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    color: var(--text-secondary);
+}
+
+/* grid-template-rows anima altura sem disparar layout thrash */
+.portfolio-tags {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s ease;
+}
+
+.portfolio-tags ul {
+    overflow: hidden;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.portfolio-tags li {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 4px;
+    padding: 0.15rem 0.45rem;
+}
+
+.portfolio-item:hover .portfolio-tags,
+.portfolio-item:focus-visible .portfolio-tags {
+    grid-template-rows: 1fr;
+}
+
+.portfolio-item:hover .portfolio-tags ul,
+.portfolio-item:focus-visible .portfolio-tags ul {
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+@media (hover: hover) {
+    .portfolio-item:hover img {
+        transform: scale(1.04);
+    }
 }
 
 .about {
@@ -694,7 +774,12 @@ footer {
     line-height: 1;
     background: none;
     border: 0;
-    padding: 0 0.25rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
     font-family: inherit;
     transition: color 0.2s ease;
 }
@@ -734,6 +819,14 @@ footer {
 .modal-tech p {
     color: var(--text-secondary);
     font-style: italic;
+}
+
+.modal-note {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px dashed rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
 }
 
 .modal-links {
@@ -786,14 +879,14 @@ body.modal-open {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .portfolio-item,
-    .portfolio-item--featured {
+    .portfolio-item {
         grid-column: span 1;
         height: 300px;
     }
 
-    .portfolio-item:last-child {
+    .portfolio-item--featured {
         grid-column: 1 / -1;
+        height: 360px;
     }
 }
 
@@ -817,8 +910,22 @@ body.modal-open {
     .nav-links {
         width: 100%;
         justify-content: space-between;
-        gap: 0.3rem;
+        gap: 0.15rem;
         font-size: 0.8rem;
+    }
+
+    .nav-links a {
+        display: flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 0.2rem 0.3rem;
+    }
+
+    /* a entrada do hero desloca 32px no eixo X e criava 16px de overflow
+       horizontal por ~0,7s, escondido pelo overflow-x do body */
+    .hero-content,
+    .hero-image {
+        animation: none;
     }
 
     .about-content {
@@ -951,7 +1058,7 @@ body.modal-open {
     background: rgba(212, 175, 55, 0.12);
     color: var(--accent);
     border: 1px solid rgba(212, 175, 55, 0.28);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 700;
     padding: 0.2rem 0.6rem;
     border-radius: 50px;
@@ -970,7 +1077,7 @@ body.modal-open {
 
 /* Emissor */
 .cert-issuer {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     margin-top: auto;
 }
@@ -978,7 +1085,7 @@ body.modal-open {
 /* Link de verificação */
 .cert-verify {
     display: inline-block;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--accent);
     text-decoration: none;
@@ -1059,6 +1166,10 @@ html::-webkit-scrollbar {
    SUPERFICIES DO NAVEGADOR
    ============================================= */
 
+#modal-title:focus {
+    outline: none;
+}
+
 ::selection {
     background: var(--accent);
     color: var(--primary);
@@ -1068,8 +1179,4 @@ html::-webkit-scrollbar {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 4px;
-}
-
-.portfolio-item:focus-visible .portfolio-overlay {
-    opacity: 1;
 }

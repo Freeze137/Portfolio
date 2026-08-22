@@ -204,6 +204,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
         let lastFocused = null;
+        const noLinksNote = document.getElementById('modal-no-links');
+        const mainContent = Array.from(document.body.children).filter(
+            el => el !== modal && el.tagName !== 'SCRIPT'
+        );
+
+        const focusableInModal = () => Array.from(
+            modal.querySelectorAll('button, [href]')
+        ).filter(el => el.offsetParent !== null);
 
         const openModal = (item) => {
                 lastFocused = item;
@@ -226,12 +234,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalImg.decode().catch(() => {});
                 }
 
-                liveLink.style.display = liveUrl === '#' ? 'none' : 'inline-block';
-                repoLink.style.display = repoUrl === '#' ? 'none' : 'inline-block';
+                const hasLive = liveUrl && liveUrl !== '#';
+                const hasRepo = repoUrl && repoUrl !== '#';
+
+                liveLink.style.display = hasLive ? 'inline-block' : 'none';
+                repoLink.style.display = hasRepo ? 'inline-block' : 'none';
+
+                // sem nenhum link a area de acoes ficava vazia e o modal lia como quebrado
+                if (noLinksNote) {
+                    noLinksNote.hidden = hasLive || hasRepo;
+                }
 
                 modal.classList.add('is-open');
                 document.body.classList.add('modal-open');
-                closeButton.focus();
+                mainContent.forEach(el => el.setAttribute('inert', ''));
+
+                // focar o titulo anuncia o nome do projeto em vez de "Fechar, botao"
+                modalTitle.focus();
         };
 
         portfolioItems.forEach(item => {
@@ -248,6 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeModal = () => {
             modal.classList.remove('is-open');
             document.body.classList.remove('modal-open');
+            mainContent.forEach(el => el.removeAttribute('inert'));
 
             if (lastFocused) {
                 lastFocused.focus();
@@ -262,8 +282,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+            if (!modal.classList.contains('is-open')) return;
+
+            if (event.key === 'Escape') {
                 closeModal();
+                return;
+            }
+
+            // sem isso o Tab saia do dialogo para a pagina congelada atras
+            if (event.key === 'Tab') {
+                const items = focusableInModal();
+                if (items.length === 0) return;
+
+                const first = items[0];
+                const last = items[items.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
             }
         });
     }
