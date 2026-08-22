@@ -220,18 +220,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tech = item.dataset.tech;
                 const liveUrl = item.dataset.liveUrl;
                 const repoUrl = item.dataset.repoUrl;
-                const imgSrc = item.querySelector('img').src;
+                // o card de projeto em andamento nao tem imagem
+                const cardImg = item.querySelector('img');
 
                 modalTitle.textContent = title;
                 modalDescription.textContent = description;
                 modalTech.textContent = tech;
                 liveLink.href = liveUrl;
                 repoLink.href = repoUrl;
-                modalImg.src = imgSrc;
-                modalImg.alt = `Captura do projeto ${title}`;
+                modalImg.hidden = !cardImg;
 
-                if (typeof modalImg.decode === 'function') {
-                    modalImg.decode().catch(() => {});
+                if (cardImg) {
+                    modalImg.src = cardImg.src;
+                    modalImg.alt = `Captura do projeto ${title}`;
+
+                    if (typeof modalImg.decode === 'function') {
+                        modalImg.decode().catch(() => {});
+                    }
                 }
 
                 const hasLive = liveUrl && liveUrl !== '#';

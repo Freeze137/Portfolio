@@ -515,6 +515,34 @@ nav {
     color: var(--text-secondary);
 }
 
+.portfolio-status--wip {
+    border: 1px dashed rgba(212, 175, 55, 0.55);
+    color: var(--accent);
+}
+
+/* Projeto em desenvolvimento: sem captura, porque nao ha o que mostrar
+   ainda. Um monograma na propria paleta e mais honesto que a marca da
+   empresa cliente ocupando o card. */
+.portfolio-item--wip {
+    background: linear-gradient(150deg, var(--secondary) 0%, var(--primary) 70%);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.portfolio-item__monogram {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: rgba(212, 175, 55, 0.09);
+    user-select: none;
+    transform: translateY(-8%);
+}
+
 /* grid-template-rows anima altura sem disparar layout thrash */
 .portfolio-tags {
     display: grid;
