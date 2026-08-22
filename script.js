@@ -222,10 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalImg.src = imgSrc;
                 modalImg.alt = `Captura do projeto ${title}`;
 
+                if (typeof modalImg.decode === 'function') {
+                    modalImg.decode().catch(() => {});
+                }
+
                 liveLink.style.display = liveUrl === '#' ? 'none' : 'inline-block';
                 repoLink.style.display = repoUrl === '#' ? 'none' : 'inline-block';
 
-                modal.style.display = 'block';
+                modal.classList.add('is-open');
                 document.body.classList.add('modal-open');
                 closeButton.focus();
         };
@@ -242,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const closeModal = () => {
-            modal.style.display = 'none';
+            modal.classList.remove('is-open');
             document.body.classList.remove('modal-open');
 
             if (lastFocused) {
@@ -258,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
+            if (event.key === 'Escape' && modal.classList.contains('is-open')) {
                 closeModal();
             }
         });
