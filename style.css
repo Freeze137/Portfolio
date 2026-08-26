@@ -5,6 +5,19 @@
 }
 
 :root {
+    /* Escala tipografica: razao 1.25 a partir de 12.8px. Substitui os 19
+       tamanhos avulsos que existiam antes. */
+    --font-sans: 'Archivo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+    --fs-xs: 0.8rem;      /* 12.8 — apenas mono em caixa alta com tracking */
+    --fs-sm: 1rem;        /* 16   — todo texto corrido e de card */
+    --fs-md: 1.25rem;     /* 20   — h3 de card, lead */
+    --fs-lg: 1.5625rem;   /* 25   — logo, botao de fechar */
+    --fs-xl: 1.9531rem;   /* 31.25 — titulo do modal */
+    --fs-2xl: 2.4414rem;  /* 39   — titulo de secao */
+    --fs-3xl: 3.0518rem;  /* 48.8 — teto do h1 */
+
     --primary: #1a1a1a;
     --secondary: #2d2d2d;
     --tertiary: #3d3d3d;
@@ -17,6 +30,7 @@
 
 html {
     background-color: #0f0f0f;
+    scrollbar-gutter: stable;
 }
 
 section[id] {
@@ -24,8 +38,7 @@ section[id] {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f0f0f;
+    font-family: var(--font-sans);
     background: linear-gradient(135deg, var(--bg) 0%, var(--primary) 100%);
     color: var(--text-primary);
     line-height: 1.6;
@@ -116,10 +129,11 @@ nav {
     align-items: center;
     gap: 12px;
     transition: gap 0.25s ease, text-shadow 0.25s ease;
-    font-size: 1.8rem;
+    font-size: var(--fs-lg);
     font-weight: 700;
+    line-height: 1;
     color: var(--accent);
-    letter-spacing: 2px;
+    letter-spacing: -0.01em;
     animation: fadeInUp 0.5s ease-out;
 }
 
@@ -196,7 +210,7 @@ nav {
 .nav-links a {
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     transition: color 0.2s ease;
     position: relative;
     padding-bottom: 0.3rem;
@@ -241,11 +255,12 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.25rem, 5.5vw, var(--fs-3xl));
     font-weight: 700;
     margin-bottom: 1.5rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
     color: var(--text-primary);
 }
 
@@ -253,11 +268,24 @@ nav {
     color: var(--accent);
 }
 
-.hero p {
-    font-size: 1.1rem;
+/* O kicker carrega o fato verificavel (semestre, curso, instituicao) para
+   que o h1 possa afirmar o trabalho em vez de um cargo. */
+.hero-kicker {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.hero-lead {
+    font-size: var(--fs-md);
     color: var(--text-secondary);
     margin-bottom: 2rem;
-    line-height: 1.8;
+    line-height: 1.6;
+    max-width: 46ch;
 }
 
 .cta-buttons {
@@ -270,8 +298,10 @@ nav {
     padding: 1rem 2.5rem;
     border: none;
     border-radius: 50px;
-    font-size: 1rem;
+    font-family: inherit;
+    font-size: var(--fs-sm);
     font-weight: 600;
+    line-height: 1.4;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     text-decoration: none;
@@ -350,7 +380,10 @@ nav {
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     margin-bottom: 3rem;
     text-align: center;
 }
@@ -393,19 +426,20 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: var(--fs-lg);
     margin-bottom: 1.5rem;
 }
 
 .skill-card h3 {
-    font-size: 1.3rem;
+    font-size: var(--fs-md);
+    line-height: 1.2;
     margin-bottom: 1rem;
     color: var(--accent);
 }
 
 .skill-card p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
 }
 
 .portfolio {
@@ -418,7 +452,6 @@ nav {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 1.75rem;
-    margin-top: 2.5rem;
 }
 
 .portfolio-item {
@@ -469,13 +502,13 @@ nav {
 }
 
 .portfolio-caption h3 {
-    font-size: 1.35rem;
-    line-height: 1.25;
+    font-size: var(--fs-md);
+    line-height: 1.2;
     color: var(--accent);
 }
 
 .portfolio-caption p {
-    font-size: 0.92rem;
+    font-size: var(--fs-sm);
     line-height: 1.4;
     color: var(--text-primary);
 }
@@ -485,8 +518,9 @@ nav {
     align-items: center;
     gap: 0.4rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    font-size: 0.72rem;
+    border-radius: 50px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -508,11 +542,6 @@ nav {
 .portfolio-status--code {
     border: 1px solid rgba(212, 175, 55, 0.55);
     color: var(--accent);
-}
-
-.portfolio-status--study {
-    border: 1px solid rgba(200, 200, 200, 0.3);
-    color: var(--text-secondary);
 }
 
 .portfolio-status--wip {
@@ -561,8 +590,9 @@ nav {
 }
 
 .portfolio-tags li {
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.02em;
     color: var(--text-secondary);
     border: 1px solid rgba(212, 175, 55, 0.22);
     border-radius: 4px;
@@ -658,14 +688,13 @@ nav {
     margin: 0 auto;
 }
 
-.contact h2 {
-    font-size: 2.5rem;
+.contact .section-title {
     margin-bottom: 1rem;
 }
 
 .contact > p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: var(--fs-md);
     margin-bottom: 2rem;
 }
 
@@ -728,23 +757,18 @@ footer {
     flex-wrap: wrap;
     gap: 0.6rem;
     margin-top: 1rem;
+    list-style: none;
 }
 
-.tech-badges span {
+.tech-badges li {
     background: rgba(212, 175, 55, 0.1);
     color: var(--accent);
     border: 1px solid rgba(212, 175, 55, 0.24);
-    padding: 0.3rem 0.9rem;
+    padding: 0.35rem 0.9rem;
     border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
-
-.tech-badges span:hover {
-    background: rgba(212, 175, 55, 0.16);
-    border-color: var(--accent);
-    transform: translate3d(0, -2px, 0);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
 }
 
 /* O modal fica sempre no layout e alterna por opacity/visibility.
@@ -797,8 +821,8 @@ footer {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: var(--fs-lg);
+    font-weight: 400;
     line-height: 1;
     background: none;
     border: 0;
@@ -829,7 +853,9 @@ footer {
 }
 
 .modal-content h3 {
-    font-size: 2rem;
+    font-size: var(--fs-xl);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
     color: var(--accent);
     margin-bottom: 1rem;
 }
@@ -846,12 +872,13 @@ footer {
 
 .modal-tech p {
     color: var(--text-secondary);
-    font-style: italic;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
 }
 
 .modal-note {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     padding: 0.9rem 1.1rem;
     border: 1px dashed rgba(212, 175, 55, 0.3);
     border-radius: 10px;
@@ -931,21 +958,17 @@ body.modal-open {
         gap: 2.5rem;
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
     .nav-links {
         width: 100%;
         justify-content: space-between;
         gap: 0.15rem;
-        font-size: 0.8rem;
     }
 
     .nav-links a {
         display: flex;
         align-items: center;
-        min-height: 40px;
+        font-size: var(--fs-xs);
+        min-height: 44px;
         padding: 0 0.2rem 0.3rem;
     }
 
@@ -982,6 +1005,11 @@ body.modal-open {
     .contact-links {
         gap: 0.8rem;
     }
+
+    /* a nav mobile quebra em duas linhas e passa de 6rem */
+    section[id] {
+        scroll-margin-top: 8.5rem;
+    }
 }
 /* =============================================
    SEÇÃO DE CERTIFICADOS
@@ -1002,7 +1030,7 @@ body.modal-open {
 .certificates-subtitle {
     text-align: center;
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: var(--fs-sm);
     max-width: 560px;
     margin: -1.5rem auto 3rem auto;
     line-height: 1.7;
@@ -1066,29 +1094,18 @@ body.modal-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    color: #fff;
     flex-shrink: 0;
 }
-
-/* Variantes de cor por instituição */
-.cert-logo--tic      { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
-.cert-logo--santander { background: linear-gradient(135deg, #dc2626, #b91c1c); }
-.cert-logo--coursera  { background: linear-gradient(135deg, #0056d2, #003f9f); font-size: 1.1rem; }
-.cert-logo--ucb       { background: linear-gradient(135deg, #1a6b3a, #145530); font-size: 0.62rem; }
-.cert-logo--workover  { background: linear-gradient(135deg, #7c3aed, #5b21b6); font-size: 1.1rem; }
-.cert-logo--campus    { background: linear-gradient(135deg, #d4af37, #b8941f); color: #111; font-size: 0.72rem; }
 
 /* Badge do ano */
 .cert-year {
     background: rgba(212, 175, 55, 0.12);
     color: var(--accent);
     border: 1px solid rgba(212, 175, 55, 0.28);
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 0.2rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    padding: 0.25rem 0.6rem;
     border-radius: 50px;
     letter-spacing: 0.04em;
     align-self: flex-start;
@@ -1096,35 +1113,41 @@ body.modal-open {
 
 /* Título do certificado */
 .cert-title {
-    font-size: 0.97rem;
+    font-size: var(--fs-sm);
     font-weight: 700;
     color: var(--text-primary);
-    line-height: 1.45;
+    line-height: 1.35;
     flex: 1;
 }
 
 /* Emissor */
 .cert-issuer {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     color: var(--text-secondary);
     margin-top: auto;
 }
 
 /* Link de verificação */
 .cert-verify {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    letter-spacing: 0.04em;
     color: var(--accent);
     text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: color 0.2s ease, letter-spacing 0.2s ease;
-    margin-top: 0.1rem;
+    transition: color 0.2s ease;
 }
 
 .cert-verify:hover {
     color: var(--accent-light);
-    letter-spacing: 0.08em;
+}
+
+.cert-verify--none {
+    color: var(--text-secondary);
+    cursor: default;
 }
 
 /* Responsivo */
@@ -1135,7 +1158,6 @@ body.modal-open {
     }
 
     .certificates-subtitle {
-        font-size: 0.9rem;
         margin-bottom: 2rem;
     }
 }
@@ -1156,15 +1178,6 @@ body.modal-open {
     display: block;
 }
 
-/* ── Esconde scrollbar mantendo o scroll ── */
-html {
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE / Edge */
-}
-
-html::-webkit-scrollbar {
-    display: none;                /* Chrome / Safari */
-}
 /* =============================================
    ACESSIBILIDADE / PERFORMANCE
    ============================================= */
