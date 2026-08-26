@@ -1,0 +1,14 @@
+# Relatorios internos de critique
+.impeccable/
+
+# Originais em alta e assets nao usados na pagina
+img/pg.webp
+img/rafa1.webp
+img/CTOFC.png
+img/port.jpeg
+img/rafa4_1.webp
+img/icone.webp
+img/cinema.webp
+
+# Backup obsoleto do portfolio
+indexbackup.html
